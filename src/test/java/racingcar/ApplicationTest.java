@@ -25,6 +25,17 @@ class ApplicationTest extends NsTest {
     }
 
     @Test
+    void 여러명이우승() {
+        assertRandomNumberInRangeTest(
+                () -> {
+                    run("pobi,woni,재경", "1");
+                    assertThat(output()).contains("pobi : -", "woni : -", "재경 : -", "최종 우승자 : pobi, woni, 재경");
+                },
+                5,5,5
+        );
+    }
+
+    @Test
     void 이름에_대한_예외_처리() {
         assertSimpleTest(
             () -> {
